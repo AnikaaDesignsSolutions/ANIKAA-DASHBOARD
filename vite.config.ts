@@ -20,7 +20,7 @@ export default defineConfig({
   // Backwards-compat with Gatsby.
   publicDir: "static",
   build: {
-    outDir: "public",
+    outDir: "dist",
   },
   resolve: {
     alias: {
