@@ -1,3 +1,3 @@
-const medusaUrl = __MEDUSA_BACKEND_URL__ || "http://localhost:9000"
+const medusaUrl = __MEDUSA_BACKEND_URL__ || "https://anikaa-store-backend.onrender.com"
 
 export { medusaUrl }
