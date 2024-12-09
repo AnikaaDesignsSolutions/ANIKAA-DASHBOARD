@@ -60,6 +60,7 @@ import {
   PaymentDetails,
   PaymentStatusComponent,
 } from "./templates"
+import MaterialDesignTable from "./MaterialDesignTable"
 
 type OrderDetailFulfillment = {
   title: string
@@ -277,6 +278,29 @@ const OrderDetails = () => {
     navigate("/404")
   }
 
+  console.log("order ",order)
+
+  // Assuming `order` is the given order object
+const getMaterialDesignData = (order) => {
+  if (!order || !order.items) {
+    console.log("No order or items found");
+    return;
+  }
+
+  // Loop through each item in the items array
+  order.items.forEach((item, index) => {
+    // Log the material_design_data if it exists
+    if (item.material_design_data) {
+      console.log(`Material design data for item ${index + 1}:`, item.material_design_data);
+    } else {
+      console.log(`No material design data for item ${index + 1}`);
+    }
+  });
+};
+
+// Usage
+getMaterialDesignData(order);
+
   return (
     <div>
       <OrderEditProvider orderId={id!}>
@@ -350,6 +374,16 @@ const OrderDetails = () => {
                     </div>
                   </div>
                 </BodyCard>
+
+                {/* New BodyCard for Material Design Data */}
+        <BodyCard className="mb-4 h-auto min-h-0 w-full" title="ITEMS">
+          {order?.items?.length ? (
+            <MaterialDesignTable items={order.items} />
+          ) : (
+            <p>No Material Design Data available.</p>
+          )}
+        </BodyCard>
+
                 <OrderEditContext.Consumer>
                   {({ showModal }) => (
                     <BodyCard
